@@ -1,9 +1,3 @@
-body {
-  margin: 0;
-  font-family: "Nunito Sans", sans-serif;
-  background-color: hsl(0deg, 0%, 98%);
-}
-
 .navbar {
   padding: 0 82px;
   height: 80px;
@@ -37,11 +31,6 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-}
-
-.Country .header {
-  padding-top: 35px;
-  margin-bottom: 80px;
 }
 
 .header {
@@ -80,14 +69,6 @@ body {
   left: 0;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 82px;
-  gap: 70px;
-  flex-wrap: wrap;
-}
-
 .card {
   width: 266px;
   height: 380px;
@@ -96,6 +77,8 @@ body {
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 3px 3px 8px hsla(0deg, 0%, 0%, 0.1);
+  color: hsl(200deg, 15%, 8%);
+  text-decoration: none;
 }
 .card:nth-last-child(1) {
   margin-right: auto;
@@ -207,17 +190,86 @@ body {
   display: none;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 82px;
+  gap: 5.5%;
+  row-gap: 90px;
+  flex-wrap: wrap;
+}
+
+.loader-wrapper {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999;
+}
+
+.loader {
+  position: relative;
+  height: 200px;
+  width: 200px;
+}
+.loader__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 20px solid transparent;
+  border-right: 20px solid hsl(207deg, 26%, 17%);
+  transform: rotateZ(-45deg);
+  animation: spinning 1.2s infinite;
+}
+
+.loader__bar:nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.loader__bar:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.loader__bar:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotateZ(-45deg);
+  }
+  100% {
+    transform: rotateZ(315deg);
+  }
+}
+body {
+  margin: 0;
+  margin-bottom: 90px;
+  font-family: "Nunito Sans", sans-serif;
+  background-color: hsl(0deg, 0%, 98%);
+}
+
+.Country .header {
+  padding-top: 35px;
+  margin-bottom: 80px;
+}
+
 .Country {
   font-size: 13px;
 }
 .Country .container {
-  height: 450px;
+  height: 400px;
   justify-content: space-between;
 }
 .Country .container .flag-wrapper {
   position: relative;
   height: 100%;
-  width: 42.3vw;
+  width: 43.9%;
   background-color: hsl(0deg, 0%, 98%);
   border-radius: 15px;
 }
@@ -228,15 +280,19 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  object-fit: contain;
 }
 .Country .container .information {
   width: 45%;
-  padding: 70px 0;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 36px;
 }
 .Country .container .information__title__main {
   margin: 0;
   font-size: 24px;
-  margin-bottom: 39px;
 }
 .Country .container .information__metadata {
   display: grid;
@@ -244,8 +300,7 @@ body {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   width: 100%;
   font-size: 13px;
-  margin-bottom: 80px;
-  row-gap: 16px;
+  row-gap: 13px;
 }
 .Country .container .information__metadata__element {
   display: inline-flex;
@@ -260,19 +315,19 @@ body {
   margin: 0;
 }
 .Country .container .information__metadata__element:nth-child(1) {
-  grid-area: 1/span 1/span 1;
+  grid-area: 1/1/span 1/span 1;
 }
 .Country .container .information__metadata__element:nth-child(2) {
-  grid-area: 2/span 1/span 1;
+  grid-area: 2/1/span 1/span 1;
 }
 .Country .container .information__metadata__element:nth-child(3) {
-  grid-area: 3/span 1/span 1;
+  grid-area: 3/1/span 1/span 1;
 }
 .Country .container .information__metadata__element:nth-child(4) {
-  grid-area: 4/span 1/span 1;
+  grid-area: 4/1/span 1/span 1;
 }
 .Country .container .information__metadata__element:nth-child(5) {
-  grid-area: 5/span 1/span 1;
+  grid-area: 5/1/span 1/span 1;
 }
 .Country .container .information__metadata__element:nth-child(6) {
   grid-area: 1/2/span 1/span 1;
@@ -284,20 +339,27 @@ body {
   grid-area: 3/2/span 1/span 1;
 }
 
+.hidden {
+  display: none;
+}
+
 .information__tags {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-top: auto;
 }
 .information__tags__title {
   font-size: 13px;
   margin: 0;
+  min-width: fit-content;
 }
 .information__tags .tags {
   list-style-type: none;
   display: flex;
   gap: 10px;
   margin: 0;
+  flex-wrap: wrap;
 }
 .information__tags .tags__item {
   display: flex;
@@ -319,6 +381,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: hsl(200deg, 15%, 8%);
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

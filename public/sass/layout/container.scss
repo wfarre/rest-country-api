@@ -1,0 +1,11 @@
+
+.container {
+    display: flex;
+    // justify-content: flex-start;
+    justify-content: space-between;
+    margin: 0 82px;
+    // gap:10px;
+    gap: 5.5%;
+    row-gap: 90px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,43 @@
+.navbar {
+    padding: 0 82px;
+    height: 80px;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 3px 3px 8px hsl(0, 0%, 0%, 0.1);
+    background-color: $element-color-light-mode;
+
+    &__title {
+        &__main {
+            font-size: 18px;
+            font-weight: 800;
+        }
+    }
+
+    &__switch {
+        font-weight: 600;
+        display: inline-flex;
+        gap: 10px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            height: 18px;
+            width: 18px;
+
+            .logo {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+        }
+
+
+    }
+}

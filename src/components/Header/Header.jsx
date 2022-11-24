@@ -4,7 +4,6 @@ import { useState } from "react";
 import { ReactComponent as SearchLogo } from "./assets/magnifying-glass-solid.svg";
 import { ReactComponent as Chevron } from "./assets/chevron-up-solid.svg";
 import { ReactComponent as Check } from "./assets/check-solid.svg";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 
 const Header = ({ handleSearch }) => {
   const [search, setSearch] = useState("");
@@ -15,17 +14,14 @@ const Header = ({ handleSearch }) => {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
+    handleSearch(e.target.value, filter);
   };
 
   const onCheck = (e) => {
     setIsOpen(false);
-    console.log(e.target.closest(".option"));
-    setFilter(e.target.value);
+    setFilter(e.target.innerHTML);
+    handleSearch(search, e.target.innerHTML);
   };
-
-  useEffect(() => {
-    handleSearch(search, filter);
-  }, [filter, search]);
 
   return (
     <header className="header">
@@ -42,38 +38,6 @@ const Header = ({ handleSearch }) => {
         </div>
       </div>
       <div className="header__filter">
-        {/* <select
-          name="countries"
-          id="countries"
-          className="header__filter__select"
-          placeholder="filter"
-        >
-          <option className="option" value="all">
-            Filter by region
-          </option>
-          <option className="option" value="Africa">
-            Africa
-          </option>
-          <option className="option" value="Asia">
-            Asia
-          </option>
-          <option className="option" value="America">
-            America
-          </option>
-          <option className="option" value="Europe">
-            Europe
-          </option>
-          <option className="option" value="Oceania">
-            Oceania
-          </option>
-        </select>
-
-
-        <div className="header__filter__select"
-          placeholder="filter">
-
-        </div> */}
-
         <div className="select">
           <div className="placeholder" onClick={() => setIsOpen(!isOpen)}>
             <span className="placeholder__text">Filter by region</span>
@@ -88,13 +52,27 @@ const Header = ({ handleSearch }) => {
                   <label
                     className="option__text"
                     onClick={onCheck}
-                    value={region}
+                    // value={region}
+                    htmlFor={region.toLowerCase()}
                   >
                     {region}
-                    <input type="radio" name="option" value={region} hidden />
                   </label>
+                  <input
+                    type="radio"
+                    id={region.toLowerCase()}
+                    name="option"
+                    value={region}
+                    hidden
+                  />
+
                   <div className="logo-wrapper">
-                    <Check className={filter === region ? "logo" : "hidden"} />
+                    <Check
+                      className={
+                        filter.toLowerCase() === region.toLowerCase()
+                          ? "logo"
+                          : "hidden"
+                      }
+                    />
                   </div>
                 </li>
               );

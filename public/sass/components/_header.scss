@@ -1,0 +1,41 @@
+.header {
+    padding: 0 82px;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+
+    &__search {
+        position: relative;
+
+        &__input {
+            // height: 57px;
+            height: calc(100%);
+            width: 450px;
+            padding-left: 74px;
+            padding-top: 0;
+            padding-bottom: 0;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 3px 3px 8px hsl(0, 0%, 0%, 0.1);
+        }
+
+        .logo-wrapper {
+            position: absolute;
+            height: 22px;
+            width: 22px;
+            top: 50%;
+            left: 32px;
+            transform: translateY(-50%);
+
+            .logo {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
+}

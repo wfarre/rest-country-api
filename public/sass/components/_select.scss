@@ -1,0 +1,95 @@
+.select {
+    position: relative;
+    // height: 57px;
+    height: 100%;
+    width: 200px;
+
+
+    .placeholder {
+        // border: 1px solid black;
+        border-radius: 5px;
+        width: calc(100% - 24px * 2);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        background-color: $element-color-light-mode;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 3px 3px 8px hsl(0, 0%, 0%, 0.1);
+
+        .logo-wrapper {
+            position: relative;
+            height: 16px;
+            width: 16px;
+
+            .logo {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+        }
+
+    }
+
+    .options {
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: calc(100% - 24px * 2);
+        height: 164px;
+        padding: 18px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        background-color: $element-color-light-mode;
+
+        list-style-type: none;
+        z-index: 999;
+        border-radius: 5px;
+        box-shadow: 3px 3px 8px hsl(0, 0%, 0%, 0.1);
+
+        // display: none;
+        .option__text {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .option {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            gap: 18px;
+
+
+
+        }
+
+        .logo-wrapper {
+            position: relative;
+            height: 16px;
+            width: 16px;
+
+            .logo {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+        }
+
+
+    }
+
+
+
+    .hidden {
+        display: none;
+    }
+}
