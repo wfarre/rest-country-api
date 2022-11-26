@@ -2,27 +2,34 @@
     position: relative;
     // height: 57px;
     height: 100%;
+    height: 56px;
     width: 200px;
+    border-radius: 5px;
 
 
     .placeholder {
         // border: 1px solid black;
+        border: none;
         border-radius: 5px;
-        width: calc(100% - 24px * 2);
+        // width: calc(100% - 24px * 2);
+        width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
         padding: 0 24px;
         background-color: $element-color-light-mode;
+        font-family: inherit;
         display: flex;
         justify-content: space-between;
         align-items: center;
         box-shadow: 3px 3px 8px hsl(0, 0%, 0%, 0.1);
+        cursor: pointer;
 
         .logo-wrapper {
             position: relative;
             height: 16px;
             width: 16px;
+            transition: transform 600ms;
 
             .logo {
                 position: absolute;
@@ -30,6 +37,23 @@
                 width: 100%;
                 left: 0;
                 top: 0;
+            }
+
+            &.reverse{
+                transform: rotateX(180deg);
+            }
+        }
+
+        &:hover{
+            &:after{
+                content: " ";
+                position: absolute;
+                top:0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: $bg-color-dark-mode;
+                opacity: 0.1;
             }
         }
 
@@ -52,19 +76,37 @@
         z-index: 999;
         border-radius: 5px;
         box-shadow: 3px 3px 8px hsl(0, 0%, 0%, 0.1);
+        transform-origin: center top;
+        animation: options-appear 600ms;
 
         // display: none;
         .option__text {
+            position: relative;
             &:hover {
                 cursor: pointer;
             }
+            
         }
 
         .option {
+            position: relative;
             display: flex;
             justify-content: flex-start;
             flex-direction: row;
             gap: 18px;
+            &:hover{
+                &:after{
+                    content: " ";
+                    position: absolute;
+                    top:0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    background-color: $bg-color-dark-mode;
+                    opacity: 0.2;
+                    cursor: pointer;
+                }
+            }
 
 
 
@@ -84,12 +126,34 @@
             }
         }
 
+       
+
 
     }
 
 
 
     .hidden {
+        // animation: options-disappear 600ms forwards;
         display: none;
+    }
+}
+
+@keyframes options-appear {
+    0%{
+        transform: scaleY(0);
+    }
+    100%{
+        transform: scaleY(1)
+    }
+}
+
+@keyframes options-disappear {
+    0%{
+        transform: scaleY(1);
+    }
+    100%{
+        transform: scaleY(0);
+        display:none;
     }
 }

@@ -11,6 +11,14 @@
     box-shadow: 3px 3px 8px hsl(0, 0%, 0%, 0.1);
     color: $text-color-light-mode;
     text-decoration: none;
+    opacity: 0;
+    // animation: card-appears 1500ms forwards;
+    @include mobile-only{
+        width: 100%;
+        height: 86.7vw;
+        min-height: 340px;
+    }
+
 
     &:nth-last-child(1) {
         margin-right: auto;
@@ -22,6 +30,9 @@
         overflow: hidden;
         // background-color: red;
         position: relative;
+        @include mobile-only{
+            height:50%;
+        }
 
         .picture {
             position: absolute;
@@ -29,19 +40,39 @@
             width: 100%;
             top: 0;
             left: 0;
+            object-fit: fill;
         }
     }
 
-    &__title {
-        font-size: 16px;
-        font-weight: 600;
-    }
+   
 
     &__info {
         padding-left: 25px;
         display: flex;
         flex-direction: column;
         gap: 13px;
+        margin-top: 30px;
+
+        @include mobile-only{
+            margin-top: 7.3vw;
+            height: 50%;
+            gap: 2.5vw;
+        }
+       
+
+        &__title {
+            font-size: 16px;
+            font-weight: 800;
+
+        
+            margin: 0;
+            margin-bottom: calc(24px - 13px);
+            @include mobile-only{
+                font-size: 26px;
+                margin-bottom: 3vw;
+
+            }
+        }
 
         &__element {
             width: 100%;
@@ -58,5 +89,21 @@
             }
         }
 
+    }
+}
+
+@for $i from 1 to 250 {
+    .card:nth-child(#{$i}){
+        animation: card-appears 1000ms $i*150ms forwards;
+    }
+}
+
+
+@keyframes card-appears {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
     }
 }

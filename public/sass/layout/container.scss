@@ -8,4 +8,8 @@
     gap: 5.5%;
     row-gap: 90px;
     flex-wrap: wrap;
+    @include mobile-only{
+        margin: 0 14.7vw;
+        flex-direction: column;
+    }
 }

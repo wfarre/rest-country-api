@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ReactComponent as SearchLogo } from "./assets/magnifying-glass-solid.svg";
 import { ReactComponent as Chevron } from "./assets/chevron-up-solid.svg";
 import { ReactComponent as Check } from "./assets/check-solid.svg";
+import { unstable_createStaticHandler } from "@remix-run/router";
 
 const Header = ({ handleSearch }) => {
   const [search, setSearch] = useState("");
@@ -23,6 +24,17 @@ const Header = ({ handleSearch }) => {
     handleSearch(search, e.target.innerHTML);
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      window.addEventListener("click", (e) => {
+        console.log(e.target.closest(".select"));
+        if (e.target.closest(".select") === null) {
+          setIsOpen(false);
+        }
+      });
+    }
+  }, [isOpen]);
+
   return (
     <header className="header">
       <div className="header__search">
@@ -34,50 +46,58 @@ const Header = ({ handleSearch }) => {
           value={search}
         />
         <div className="logo-wrapper">
-          <SearchLogo />
+          <SearchLogo className="logo" />
         </div>
       </div>
       <div className="header__filter">
         <div className="select">
-          <div className="placeholder" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            type="button"
+            aria-controls="options"
+            className="placeholder"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+          >
             <span className="placeholder__text">Filter by region</span>
-            <div className="logo-wrapper">
+            <span className={isOpen ? "logo-wrapper reverse" : "logo-wrapper"}>
               <Chevron className="logo" />
-            </div>
-          </div>
-          <ul className={isOpen ? "options" : "hidden"}>
-            {regions.map((region) => {
-              return (
-                <li className="option" key={region}>
-                  <label
-                    className="option__text"
-                    onClick={onCheck}
-                    // value={region}
-                    htmlFor={region.toLowerCase()}
-                  >
-                    {region}
-                  </label>
-                  <input
-                    type="radio"
-                    id={region.toLowerCase()}
-                    name="option"
-                    value={region}
-                    hidden
-                  />
-
-                  <div className="logo-wrapper">
-                    <Check
-                      className={
-                        filter.toLowerCase() === region.toLowerCase()
-                          ? "logo"
-                          : "hidden"
-                      }
+            </span>
+          </button>
+          {isOpen && (
+            <ul id={"options"} className={"options"}>
+              {regions.map((region) => {
+                return (
+                  <li className="option" key={region}>
+                    <label
+                      className="option__text"
+                      onClick={onCheck}
+                      // value={region}
+                      htmlFor={region.toLowerCase()}
+                    >
+                      {region}
+                    </label>
+                    <input
+                      type="radio"
+                      id={region.toLowerCase()}
+                      name="option"
+                      value={region}
+                      hidden
                     />
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+
+                    <div className="logo-wrapper">
+                      <Check
+                        className={
+                          filter.toLowerCase() === region.toLowerCase()
+                            ? "logo"
+                            : "hidden"
+                        }
+                      />
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
       </div>
     </header>

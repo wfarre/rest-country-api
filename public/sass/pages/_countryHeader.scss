@@ -1,0 +1,10 @@
+.Country {
+    .header {
+        padding-top: 35px;
+        margin-bottom: 80px;
+        @include mobile-only(){
+            padding-top: 25px;
+            margin-bottom: 16.7vw;
+        }
+    }
+}

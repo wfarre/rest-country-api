@@ -1,0 +1,61 @@
+@mixin theme-color($bg-color, $element-color, $input-color, $text-color){
+    background-color: $bg-color;
+    color: $text-color;
+    .navbar{
+        background-color: $element-color;
+    }
+    .card{
+        background-color: $element-color;
+        color: $text-color;
+    }
+    .select{
+        background-color: $input-color;
+        .placeholder{
+            background-color: $input-color;
+            color: $text-color;
+        }
+        .options{
+            background-color: $input-color;
+        }
+    }
+    .header{
+        &__search__input{
+            background-color: $input-color;
+            color: $text-color;
+            &::placeholder{
+                color: $text-color;
+            }
+        }
+    }
+
+    .loader-wrapper{
+        background-color: $bg-color
+    }
+
+    .loader__bar{
+        border-right: $text-color 20px solid; 
+    }
+
+    .logo-wrapper{
+        .logo{
+            fill:$text-color;
+        }
+    }
+
+    .btn--back{
+        background-color: $element-color;
+        color: $text-color
+    }
+    .flag{
+        background-color: $bg-color;
+    }
+
+}
+
+
+
+
+.dark{
+    @include theme-color($bg-color-dark-mode, $element-color-dark-mode, $element-color-dark-mode, $text-color-dark-mode);
+
+}

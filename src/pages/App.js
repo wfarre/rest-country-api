@@ -3,9 +3,10 @@ import "../styles/styles.css";
 
 import Header from "../components/Header/Header";
 import Card from "../components/Card/Card";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loader from "../components/Loader/Loader";
 import CountryFactory from "../factories/CountryFactory";
+import { themeContext } from "../utils/context/context";
 
 function App() {
   const [data, setData] = useState([]);
@@ -15,6 +16,8 @@ function App() {
     input: "",
     filter: "",
   });
+
+  const { theme, toggleTheme } = useContext(themeContext);
 
   const filterCountriesBySearch = (array, search) => {
     let filteredArray = array.filter((country) => {
@@ -28,10 +31,8 @@ function App() {
     if (filter === "") {
       return array;
     }
-    console.log(array);
 
     let filteredArray = array.filter((country) => {
-      console.log(country.region);
       return country.region.toLowerCase() === filter.toLowerCase();
     });
 
@@ -78,13 +79,17 @@ function App() {
     });
   };
 
+  // const handleDarkMode = (state) = {
+  //   setDark(state)
+  // }
+
   if (error) {
     return <div> error: {error.message}</div>;
   } else if (!isLoaded) {
     return <Loader />;
   } else {
     return (
-      <div className="App">
+      <div className={"App page " + theme}>
         <Header handleSearch={handleSearch} />
         <main>
           <section className="section section--results">
