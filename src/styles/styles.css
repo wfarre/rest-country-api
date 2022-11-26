@@ -1257,7 +1257,7 @@
   flex-direction: row;
   gap: 18px;
 }
-.select .options .option:hover:after {
+.select .options .option:hover:before {
   content: " ";
   position: absolute;
   top: 0;
