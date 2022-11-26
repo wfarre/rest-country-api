@@ -11,7 +11,9 @@ const Card = ({ flag, name, population, region, capital }) => {
         <h3 className="card__info__title">{name}</h3>
         <div className="card__info__element">
           <h4 className="card__info__element__title">Population</h4>
-          <p className="card__info__element__text">{population}</p>
+          <p className="card__info__element__text">
+            {population.toLocaleString("en-US")}
+          </p>
         </div>
         <div className="card__info__element">
           <h4 className="card__info__element__title">Region</h4>

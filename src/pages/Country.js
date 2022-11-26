@@ -99,7 +99,7 @@ const Country = () => {
                       Population:
                     </h4>
                     <p className="information__metadata__element__text">
-                      {data.population}
+                      {data.population.toLocaleString("en-US")}
                     </p>
                   </div>
                   <div className="information__metadata__element">
