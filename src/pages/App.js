@@ -79,10 +79,6 @@ function App() {
     });
   };
 
-  // const handleDarkMode = (state) = {
-  //   setDark(state)
-  // }
-
   if (error) {
     return <div> error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -100,19 +96,23 @@ function App() {
             </header>
 
             <div className="container">
-              {data.map((country, key = 0) => {
-                key++;
-                return (
-                  <Card
-                    key={key}
-                    flag={country.flag}
-                    name={country.name}
-                    population={country.population}
-                    region={country.region}
-                    capital={country.capital ? country.capital : ""}
-                  />
-                );
-              })}
+              {data.length === 0 ? (
+                <p className="not-found">No country found!</p>
+              ) : (
+                data.map((country, key = 0) => {
+                  key++;
+                  return (
+                    <Card
+                      key={key}
+                      flag={country.flag}
+                      name={country.name}
+                      population={country.population}
+                      region={country.region}
+                      capital={country.capital ? country.capital : ""}
+                    />
+                  );
+                })
+              )}
             </div>
           </section>
         </main>

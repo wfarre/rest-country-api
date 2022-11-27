@@ -57,6 +57,7 @@
                 width: 100%;
                 font-size: 13px;
                 row-gap: 13px;
+                padding: 0;
                 @include mobile-only(){
                     display: flex;
                     flex-direction: column;

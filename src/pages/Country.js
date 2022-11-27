@@ -85,72 +85,74 @@ const Country = () => {
                 <div className="information__title">
                   <h2 className="information__title__main">{data.name}</h2>
                 </div>
-                <div className="information__metadata">
-                  <div className="information__metadata__element">
+                {/* <div > */}
+                <ul className="information__metadata">
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Native Name:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.nativeName}
                     </p>
-                  </div>
-                  <div className="information__metadata__element">
+                  </li>
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Population:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.population.toLocaleString("en-US")}
                     </p>
-                  </div>
-                  <div className="information__metadata__element">
+                  </li>
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Region:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.region}
                     </p>
-                  </div>
-                  <div className="information__metadata__element">
+                  </li>
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Sub Region:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.subRegion}
                     </p>
-                  </div>
-                  <div className="information__metadata__element">
+                  </li>
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Capital:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.capital}
                     </p>
-                  </div>
-                  <div className="information__metadata__element">
+                  </li>
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Top Level Domain:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.topLevelDomain}
                     </p>
-                  </div>
-                  <div className="information__metadata__element">
+                  </li>
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Currencies:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.currencies.join(", ")}
                     </p>
-                  </div>
-                  <div className="information__metadata__element">
+                  </li>
+                  <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
                       Languages:
                     </h4>
                     <p className="information__metadata__element__text">
                       {data.languages.join(", ")}
                     </p>
-                  </div>
-                </div>
+                  </li>
+                </ul>
+                {/* </div> */}
                 <div
                   className={
                     data.borders.length !== 0 ? "information__tags" : "hidden"
