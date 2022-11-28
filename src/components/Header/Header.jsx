@@ -4,30 +4,42 @@ import { useState } from "react";
 import { ReactComponent as SearchLogo } from "./assets/magnifying-glass-solid.svg";
 import { ReactComponent as Chevron } from "./assets/chevron-up-solid.svg";
 import { ReactComponent as Check } from "./assets/check-solid.svg";
-import { unstable_createStaticHandler } from "@remix-run/router";
 
 const Header = ({ handleSearch }) => {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  // The different options for the select component
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
+  /**
+   * if the user enters a research it will update search state
+   *  and update the serach state in the parent component
+   */
   const handleChange = (e) => {
     setSearch(e.target.value);
     handleSearch(e.target.value, filter);
   };
 
+  /**
+   * The user will choose an option.
+   * Once the option is choosen, it will set the filter state and pass it to the parent element.
+   * Then, it will close the select menu.
+   * @param {*} e
+   */
   const onCheck = (e) => {
     setIsOpen(false);
     setFilter(e.target.innerHTML);
     handleSearch(search, e.target.innerHTML);
   };
 
+  /**
+   * It will close the select menu, if the user click somewehere else in the page.
+   */
   useEffect(() => {
     if (isOpen) {
       window.addEventListener("click", (e) => {
-        console.log(e.target.closest(".select"));
         if (e.target.closest(".select") === null) {
           setIsOpen(false);
         }

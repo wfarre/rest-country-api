@@ -6,7 +6,6 @@ import Card from "../components/Card/Card";
 import { useContext, useEffect, useState } from "react";
 import Loader from "../components/Loader/Loader";
 import CountryFactory from "../factories/CountryFactory";
-import { themeContext } from "../utils/context/context";
 
 function App() {
   const [data, setData] = useState([]);
@@ -16,8 +15,6 @@ function App() {
     input: "",
     filter: "",
   });
-
-  const { theme, toggleTheme } = useContext(themeContext);
 
   const filterCountriesBySearch = (array, search) => {
     let filteredArray = array.filter((country) => {
@@ -85,7 +82,7 @@ function App() {
     return <Loader />;
   } else {
     return (
-      <div className={"App page " + theme}>
+      <div className={"App page "}>
         <Header handleSearch={handleSearch} />
         <main>
           <section className="section section--results">

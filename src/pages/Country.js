@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import CountryFactory from "../factories/CountryFactory";
-import { themeContext } from "../utils/context/context";
 import { ReactComponent as ArrowBack } from "../assets/arrow-left-solid.svg";
 
 const Country = () => {
@@ -11,8 +10,6 @@ const Country = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const params = useParams();
   const [countryNames, setCountryNames] = useState([]);
-
-  const { theme, toggleTheme } = useContext(themeContext);
 
   useEffect(() => {
     // if (
@@ -24,8 +21,6 @@ const Country = () => {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
       .then((data) => {
-        // console.log("hello");
-        // console.log(data);
         let myCountryNames = [];
         data.forEach((country) => {
           myCountryNames.push({
@@ -33,7 +28,6 @@ const Country = () => {
             abbrev: country.cca3,
           });
         });
-        // console.log(myCountryNames);
         localStorage.setItem("countryNames", myCountryNames);
         setCountryNames(myCountryNames);
       })
@@ -41,15 +35,11 @@ const Country = () => {
     // }
   }, []);
 
-  // console.log(countryNames);
-
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/name/" + params.name)
       .then((res) => res.json())
       .then((data) => {
-        console.log(countryNames);
         let yoData = new CountryFactory(data[0], "apiv3", countryNames);
-        console.log(yoData);
         setIsLoaded(true);
         setData(yoData);
       })
@@ -65,7 +55,7 @@ const Country = () => {
     return <Loader />;
   } else {
     return (
-      <div className={"Country page " + theme}>
+      <div className={"Country page "}>
         <header className="header">
           <Link to={"/"} className="btn btn--back">
             <div className="logo-wrapper">

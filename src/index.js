@@ -1,28 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Country from "./pages/Country";
-import ThemeProvider, { themeContext } from "./utils/context/context";
-
-// const { theme, toggleTheme } = useContext(themeContext);
+import ThemeProvider from "./utils/context/context";
+import Router from "./Router";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
-    {/* <div className="dark"> */}
     <ThemeProvider>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/country/:name" element={<Country />} />
-      </Routes>
+      <Router />
     </ThemeProvider>
-
-    {/* </div> */}
   </BrowserRouter>
   // </React.StrictMode>
 );

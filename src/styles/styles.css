@@ -1575,6 +1575,7 @@
 .dark {
   background-color: hsl(207deg, 26%, 17%);
   color: hsl(0deg, 0%, 98%);
+  transition: all 800ms;
 }
 .dark .navbar {
   background-color: hsl(209deg, 23%, 22%);
@@ -1617,6 +1618,52 @@
   background-color: hsl(207deg, 26%, 17%);
 }
 
+.light {
+  background-color: hsl(0deg, 0%, 98%);
+  color: hsl(200deg, 15%, 8%);
+  transition: all 800ms;
+}
+.light .navbar {
+  background-color: hsl(0deg, 0%, 100%);
+}
+.light .card {
+  background-color: hsl(0deg, 0%, 100%);
+  color: hsl(200deg, 15%, 8%);
+}
+.light .select {
+  background-color: hsl(0deg, 0%, 100%);
+}
+.light .select .placeholder {
+  background-color: hsl(0deg, 0%, 100%);
+  color: hsl(200deg, 15%, 8%);
+}
+.light .select .options {
+  background-color: hsl(0deg, 0%, 100%);
+}
+.light .header__search__input {
+  background-color: hsl(0deg, 0%, 100%);
+  color: hsl(200deg, 15%, 8%);
+}
+.light .header__search__input::placeholder {
+  color: hsl(200deg, 15%, 8%);
+}
+.light .loader-wrapper {
+  background-color: hsl(0deg, 0%, 98%);
+}
+.light .loader__bar {
+  border-right: hsl(200deg, 15%, 8%) 20px solid;
+}
+.light .logo-wrapper .logo {
+  fill: hsl(200deg, 15%, 8%);
+}
+.light .btn--back {
+  background-color: hsl(0deg, 0%, 100%);
+  color: hsl(200deg, 15%, 8%);
+}
+.light .flag {
+  background-color: hsl(0deg, 0%, 98%);
+}
+
 body {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
@@ -1627,6 +1674,10 @@ body {
 .not-found {
   width: 100%;
   text-align: center;
+}
+
+.country-link {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

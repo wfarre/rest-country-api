@@ -57,5 +57,10 @@
 
 .dark{
     @include theme-color($bg-color-dark-mode, $element-color-dark-mode, $element-color-dark-mode, $text-color-dark-mode);
+    transition: all 800ms;
+}
 
+.light{
+    @include theme-color($bg-color-light-mode, $element-color-light-mode, $element-color-light-mode, $text-color-light-mode);
+    transition: all 800ms;
 }
