@@ -10,6 +10,7 @@
     flex-wrap: wrap;
     @include mobile-only{
         margin: 0 14.7vw;
+        width: calc(100% - 2 * 14.7vw);
         flex-direction: column;
     }
 }

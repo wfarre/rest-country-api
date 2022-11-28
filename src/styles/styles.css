@@ -94,8 +94,8 @@
 }
 
 .card {
-  width: 266px;
-  height: 380px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   background-color: hsl(0deg, 0%, 100%);
   overflow: hidden;
@@ -105,18 +105,11 @@
   text-decoration: none;
   opacity: 0;
 }
-@media all and (max-width: 750px) {
-  .card {
-    width: 100%;
-    height: 86.7vw;
-    min-height: 340px;
-  }
-}
 .card:nth-last-child(1) {
   margin-right: auto;
 }
 .card__picture {
-  height: 181px;
+  height: 160px;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -138,8 +131,9 @@
   padding-left: 25px;
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 7px;
   margin-top: 30px;
+  width: calc(100% - 25px);
 }
 @media all and (max-width: 750px) {
   .card__info {
@@ -152,7 +146,7 @@
   font-size: 16px;
   font-weight: 800;
   margin: 0;
-  margin-bottom: 11px;
+  margin-bottom: 17px;
 }
 @media all and (max-width: 750px) {
   .card__info__title {
@@ -167,10 +161,23 @@
   gap: 10px;
 }
 .card__info__element__title {
+  font-size: 13px;
+  font-weight: 600;
   margin: 0;
+}
+@media all and (max-width: 750px) {
+  .card__info__element__title {
+    font-size: 20px;
+  }
 }
 .card__info__element__text {
   margin: 0;
+  font-size: 13px;
+}
+@media all and (max-width: 750px) {
+  .card__info__element__text {
+    font-size: 20px;
+  }
 }
 
 .card:nth-child(1) {
@@ -1312,6 +1319,7 @@
 @media all and (max-width: 750px) {
   .container {
     margin: 0 14.7vw;
+    width: calc(100% - 29.4vw);
     flex-direction: column;
   }
 }
@@ -1678,6 +1686,15 @@ body {
 
 .country-link {
   text-decoration: none;
+  width: 266px;
+  height: 340px;
+}
+@media all and (max-width: 750px) {
+  .country-link {
+    width: 100%;
+    height: 86.7vw;
+    min-height: 400px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

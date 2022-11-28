@@ -39,6 +39,18 @@ body {
 
 .country-link{
     text-decoration: none;
+    // width: 100%;
+    // width: max-content;
+    width: 266px;
+    // width: 18.5vw;
+    // min-width: 266px;
+    height: 340px;
+
+    @include mobile-only{
+        width: 100%;
+        height: 86.7vw;
+        min-height: 400px;
+    }
 }
 
 
