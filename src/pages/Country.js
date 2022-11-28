@@ -11,37 +11,46 @@ const Country = () => {
   const params = useParams();
   const [countryNames, setCountryNames] = useState([]);
 
+  /**
+   * We get the list of the countries with their abreviations.
+   * If the list of the countris is in the localStorage, we get it from the localStorage,
+   * otherwise we fetch the data from the API.
+   */
   useEffect(() => {
-    // if (
-    //   localStorage.getItem("countryNames") ||
-    //   JSON.parse(localStorage.getItem("countryNames")) !== []
-    // ) {
-    //   setCountryNames(JSON.parse(localStorage.getItem("countryNames")));
-    // } else {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => {
-        let myCountryNames = [];
-        data.forEach((country) => {
-          myCountryNames.push({
-            name: country.name.common,
-            abbrev: country.cca3,
+    if (
+      localStorage.getItem("countryNames") ||
+      JSON.parse(localStorage.getItem("countryNames")) !== []
+    ) {
+      setCountryNames(JSON.parse(localStorage.getItem("countryNames")));
+    } else {
+      fetch("https://restcountries.com/v3.1/all")
+        .then((res) => res.json())
+        .then((data) => {
+          let myCountryNames = [];
+          data.forEach((country) => {
+            myCountryNames.push({
+              name: country.name.common,
+              abbrev: country.cca3,
+            });
           });
-        });
-        localStorage.setItem("countryNames", myCountryNames);
-        setCountryNames(myCountryNames);
-      })
-      .catch((err) => console.log(err));
-    // }
+          localStorage.setItem("countryNames", myCountryNames);
+          setCountryNames(myCountryNames);
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
 
+  /**
+   * We fetch the data of the desired country,
+   * and we use a factory pattern to formate the data.
+   */
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/name/" + params.name)
       .then((res) => res.json())
       .then((data) => {
-        let yoData = new CountryFactory(data[0], "apiv3", countryNames);
+        let countryData = new CountryFactory(data[0], "apiv3", countryNames);
         setIsLoaded(true);
-        setData(yoData);
+        setData(countryData);
       })
       .catch((error) => {
         setIsLoaded(true);
@@ -75,7 +84,6 @@ const Country = () => {
                 <div className="information__title">
                   <h2 className="information__title__main">{data.name}</h2>
                 </div>
-                {/* <div > */}
                 <ul className="information__metadata">
                   <li className="information__metadata__element">
                     <h4 className="information__metadata__element__title">
@@ -142,7 +150,6 @@ const Country = () => {
                     </p>
                   </li>
                 </ul>
-                {/* </div> */}
                 <div
                   className={
                     data.borders.length !== 0 ? "information__tags" : "hidden"

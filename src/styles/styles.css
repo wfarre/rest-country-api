@@ -14,7 +14,7 @@
   }
 }
 .navbar__title__main {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
 }
 .navbar__switch {
@@ -1306,7 +1306,7 @@
   justify-content: space-between;
   margin: 0 82px;
   gap: 5.5%;
-  row-gap: 90px;
+  row-gap: 75px;
   flex-wrap: wrap;
 }
 @media all and (max-width: 750px) {
