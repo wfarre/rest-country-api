@@ -19,7 +19,9 @@
 }
 .navbar__switch {
   font-weight: 600;
+  font-size: 20px;
   display: inline-flex;
+  align-items: center;
   gap: 10px;
 }
 .navbar__switch:hover {
